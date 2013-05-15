@@ -51,6 +51,7 @@ namespace DapperExtensions.Mapper
         {
             _propertyTypeKeyTypeMapping = new Dictionary<Type, KeyType>
                                              {
+                                                 { typeof(string), KeyType.Identity },
                                                  { typeof(byte), KeyType.Identity }, { typeof(byte?), KeyType.Identity },
                                                  { typeof(sbyte), KeyType.Identity }, { typeof(sbyte?), KeyType.Identity },
                                                  { typeof(short), KeyType.Identity }, { typeof(short?), KeyType.Identity },

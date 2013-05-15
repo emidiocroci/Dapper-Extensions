@@ -96,9 +96,18 @@ namespace DapperExtensions
                 }
 
                 long identityValue = result.First();
-                int identityInt = Convert.ToInt32(identityValue);
-                keyValues.Add(identityColumn.Name, identityInt);
-                identityColumn.PropertyInfo.SetValue(entity, identityInt, null);
+                if (identityColumn.PropertyInfo.PropertyType.Equals(typeof(String)))
+                {
+                    string identityString = Convert.ToString(identityValue);
+                    identityColumn.PropertyInfo.SetValue(entity, identityString, null);
+                    keyValues.Add(identityColumn.Name, identityString);
+                }
+                else
+                {
+                    int identityInt = Convert.ToInt32(identityValue);
+                    keyValues.Add(identityColumn.Name, identityInt);
+                    identityColumn.PropertyInfo.SetValue(entity, identityInt, null);
+                }
             }
             else
             {
